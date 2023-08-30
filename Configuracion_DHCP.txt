@@ -1,0 +1,95 @@
+**********************************************************************************
+INSTALA
+**********************************************************************************
+
+sudo apt update 
+sudo apt upgrade    
+
+sudo apt-get install isc-dhcp-server -y
+
+**********************************************************************************
+CONFIGURA
+**********************************************************************************
+
+sudo cp   /etc/dhcp/dhcpd.conf  /etc/dhcp/dhcpd.conf.old
+sudo nano /etc/dhcp/dhcpd.conf
+
+EDITA ARCHIVO
+option domain-name-servers 10.0.0.2, 10.0.0.3;
+default-lease-time 3600;
+max-lease-time 7200;
+#authoritative;
+# Specify the network address and subnet-mask
+  subnet 10.0.0.0 netmask 255.255.255.0 {
+  # Specify the default gateway address
+  option routers 10.0.0.1;
+  # Specify the subnet-mask
+  option subnet-mask 255.255.255.0;
+  # Specify the range of leased IP addresses
+  range 10.0.0.10 10.0.0.20;
+}
+
+
+PARA RESERVAR VALIDAR EN EL ARCHIVO DIRECCION MAC Y REEMPLAZAR
+
+
+**********************************************************************************
+REINICIA SERVICIO
+**********************************************************************************
+
+sudo systemctl restart isc-dhcp-server.service
+
+**********************************************************************************
+IP TEMPORAL
+**********************************************************************************
+
+sudo ifconfig enps09 up
+ifconfig enp0s9 192.168.1.2 netmask 255.255.255.0 up 
+ifconfig enp0s9
+
+
+**********************************************************************************
+CONFIGURA INTERFAZ IP FIJA
+**********************************************************************************
+
+sudo ifconfig enps08 up
+sudo cp /etc/netplan/50-cloud-init.yaml /etc/netplan/50-cloud-init.yaml.old
+sudo nano /etc/netplan/50-cloud-init.yaml
+
+
+EDITA CONFIGURACION
+
+ enp0s3:
+     
+   	dhcp4: no
+        
+	dhcp6: no
+        
+	addresses: 
+	     - 192.168.0.2/24
+       
+	gateway4: 192.168.0.1
+      
+	nameservers:    
+         
+		   addresses: [192.168.0.1,8.8.8.8]
+
+FIN EDICION
+
+
+APLICA CONFIGURACION
+sudo net apply 
+
+VALIDA CONFIGURACION
+ifconfig
+
+
+Dejar conexion en Red Interna Todas las Interfaces PARA VIRTUALBOX
+
+**********************************************************************************
+IP ENTREGADAS
+**********************************************************************************
+
+dhcp-lease-list
+
+

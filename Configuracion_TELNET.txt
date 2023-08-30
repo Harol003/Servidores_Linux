@@ -1,0 +1,13 @@
+sudo apt-get install net-tools
+sudo apt install update-inetd
+sudo apt-get install openbsd-inetd
+sudo apt-get install telnetd
+sudo nano /etc/inetd.conf
+
+telnet stream tcp nowait telnetd /usr/sbin/tcpd /usr/sbin/in.telnetd
+
+sudo /etc/init.d/openbsd-inetd restart
+netstat -ltp
+
+
+

@@ -1,0 +1,110 @@
+*********************************************************************************
+INSTALACION
+*********************************************************************************
+
+sudo apt-get update
+sudo apt-get install bind9
+
+*********************************************************************************
+RETIRAR INTERNET Y CONFIGURAR RED
+*********************************************************************************
+
+sudo nano /etc/netplan/50-cloud-init.yaml
+
+ethernets:
+	enp0s3:
+		dhcp4: false
+		addresses: [192.168.2.2/24]
+		gateway4: 192.168.2.1
+		nameservers:	
+			addresses: [192.168.2.2,8.8.8.8]
+	version: 2
+
+netplan apply
+
+
+
+*********************************************************************************
+CONFIGURAR DNS PARA DOMINIO CLASELINUX.LOCAL
+*********************************************************************************
+cd /etc/bind
+sudo cp named.conf.local named.conf.local.old
+sudo nano named.conf.local 
+
+EDITA ARCHIVO
+zone "claselinux.local" {
+	type master;
+                file "/etc/bind/claselinux.local";
+};
+
+zone "2.168.192.in-addr.arpa" {
+	type master;
+	file "/etc/bind/claselinux.local.2";
+};
+FIN EDICION
+
+sudo cp named.conf.options named.conf.options.old
+sudo nano name.conf.options
+
+EDITA ARCHIVO QUITAR COMENTARIO Y AGREGAR DNS GOOGLE
+forwader 
+8.8.8.8 
+FIN EDICION
+
+sudo cp db.local claselinux.local
+sudo nano claselinux.local
+
+EDITA ARCHIVO REEMPLAZA localhost POR claselinux.local. EN TODAS LAS LINEAS TAMBIEN SE ADICIONA LA IP DE LA MAQUINA 192.168.2.2 LUEGO AGREGAR
+
+intranet	IN	A	192.168.2.3
+mail	IN	A	192.168.2.4
+ftp	IN	A	192.168.2.5
+web	IN	A	192.168.2.6
+dns	IN	A	192.168.2.2
+FIN EDICION
+
+sudo cp db.local claselinux.local.2
+sudo nano claselinux.local.2   ARCHIVO DE LA ZONA INVERSA
+
+EDITA ARCHIVO localhost POR claselinux.local. EN TODAS LAS LINEAS ADICIONALMENTE RETIRAR LAS DOS ULTIMAS LINEAS Y AGREGAR
+
+1	IN 	PTR 	admin.claselinux.local.
+4	IN 	PTR 	intranet.claselinux.local.
+5	IN 	PTR 	ftp.claselinux.local.
+6	IN 	PTR 	web.claselinux.local.
+2	IN 	PTR 	dns.claselinux.local.
+3	IN 	PTR 	dhcp.claselinux.local.
+FIN EDICION
+
+
+cd /etc/bin
+sudo nano hosts
+EDITA ARHIVO AGREGANDO LA LINEA
+127.0.0.1	claselinux.local
+FIN EDICION
+
+*********************************************************************************
+REINCIAR SERVICIOS 
+*********************************************************************************
+
+SERVICE BIND9 RESTART
+SERVICE BIND9 STATUS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

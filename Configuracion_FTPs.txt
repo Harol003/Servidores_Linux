@@ -1,0 +1,173 @@
+*******************************************************************************************
+*********************      Creado Por:  Harol Hernan Torres Neuta       *******************
+*********************       Harol.torres.neuta@outlook.com     21/11/19 *******************
+********************* Especialista en Educacion en Tecnologia Colombia  *******************
+*******************************************************************************************
+***************************** SEMINARIO LINUX *********************************************
+*******************************************************************************************
+
+
+**************************************
+INSTALACION
+**************************************
+
+sudo apt-get update
+sudo apt-get install vsftpd
+sudo cp /etc/vsftpd.conf /etc/vsftpd.conf.original   (COPIA DE SEGURIDAD)
+
+**************************************
+PERMITIR TRAFICO FTP
+**************************************
+
+sudo ufw status
+sudo ufw allow 20/tcp
+sudo ufw allow 21/tcp
+sudo ufw allow 990/tcp                  (TRAFICO PARA FTPS)
+sudo ufw allow 40000:50000/tcp          (TRAFICO PARA FTPS)
+sudo ufw status
+
+**************************************
+CONFIGURACION CARPETAS DE USUARIO
+**************************************
+
+sudo adduser usuftp                                   (CREACION USUARIO FTP)
+sudo mkdir /home/usuftp/ftp                           (CREACION DE CARPETA FTP PARA LA TRANSFERENCIA DE ARCHIVOS)
+sudo chown nobody:nogroup /home/usuftp/ftp            (ESTABLECE PROPIEDAD DE LA CARPETA)
+sudo chmod a-w /home/usuftp/ftp                       (ELIMINA PERMISOS DE ESCRITURA)
+sudo ls -la /home/usuftp/ftp                          (VERIFICA PERMISOS)
+
+
+sudo mkdir /home/usuftp/ftp/telefonica                                         (CREACION DE CARPETA FTP PARA LA TRANSFERENCIA DE ARCHIVOS)
+sudo chown usuftp:usuftp /home/usuftp/ftp/telefonica                           (CREACION DE CARPETA FTP PARA LA TRANSFERENCIA DE ARCHIVOS)
+echo "ARCHIVO_PRUEBA_FTP" | sudo tee /home/usuftp/ftp/telefonica/Datos.txt     (CREACION DE ARCHIVO EN LA RUTA A MODO DE PRUEBA)
+
+
+**************************************
+CONFIGURACION VSFTPD
+**************************************
+
+sudo nano /etc/vsftpd.conf                     (ABRE ARCHIVO DE CONFIGURACION CON PERMISOS DE ROOT)
+
+
+anonymous_enable=NO
+local_enable=YES
+write_enable=YES
+chroot_local_user=YES
+
+
+
+user_sub_token=$USER                         (PARAMETRO MANUAL)
+local_root=/home/$USER/ftp	             (PARAMETRO MANUAL)
+pasv_min_port = 40000
+pasv_max_port = 50000
+userlist_enable=YES
+userlist_file=/etc/vsftpd.userlist           (PARAMETRO MANUAL)
+userlist_deny=NO                             (PARAMETRO MANUAL)
+
+
+**************************************
+CONFIGURACION  DE USUARIOS
+**************************************
+
+
+echo "usuftp" | sudo tee -a /etc/vsftpd.userlist   (CREACION DEL ARCHIVO USERLIST Y ADICION DEL USUARIO USUFTP)
+cat /etc/vsftpd.userlist                           (VALIDACION DEL USUARIO EN EL ARCHIVO CREADO)
+
+
+**************************************
+REINICIAR SERVICIO
+**************************************
+
+sudo systemctl restart vsftpd
+
+
+**************************************
+CAPA DE SEGURIDAD FTP
+**************************************
+sudo apt install build-essential checkinstall zlib1g-dev -y
+
+
+INICIO COMO ROOT
+
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/vsftpd.pem -out /etc/ssl/vsftpd.pem
+
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem     (CREACION DE CERTIFICADO)
+
+
+sudo nano /etc/vsftpd.conf                       (EDITAR ARCHIVO DE CONFIGURACION)
+
+
+# rsa_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem                 (ESTAS LINEAS DEBEN ESTAR COMENTARIADAS CON EL CARACTER #)
+# rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key        (ESTAS LINEAS DEBEN ESTAR COMENTARIADAS CON EL CARACTER #)
+rsa_cert_file=/etc/ssl/private/vsftpd.pem                            (ADICIONAR LINEA, ESTAS APUNTAN AL CERTIFICADO CREADO)
+rsa_private_key_file=/etc/ssl/private/vsftpd.pem                     (ADICIONAR LINEA, ESTAS APUNTAN AL CERTIFICADO CREADO)
+ssl_enable=YES							     (HABILITAR SSL)
+allow_anon_ssl=NO                                                    (CON ESTAS LINEAS NO SE PERMITE EL ACCESO ANONIMO)
+force_local_data_ssl=YES				             (CON ESTAS LINEAS NO SE PERMITE EL ACCESO ANONIMO)
+force_local_logins_ssl=YES                                           (CON ESTAS LINEAS NO SE PERMITE EL ACCESO ANONIMO)
+ssl_tlsv1=YES                                                        (CONFIGURACION TLSV1)
+ssl_sslv2=NO	                                                     (CONFIGURACION TLSV1)
+ssl_sslv3=NO                                                         (CONFIGURACION TLSV1)
+require_ssl_reuse=NO                                                 (EVITA REUSO PARA CLIENTES FTP, CORRIGE FALLAS DE CONEXION)
+ssl_ciphers=HIGH                                                     (EVITA REUSO PARA CLIENTES FTP, CORRIGE FALLAS DE CONEXION)
+
+
+**************************************
+REINICIAR SERVICIO
+**************************************
+
+sudo systemctl restart vsftpd
+
+
+**************************************
+INSTALAR CLIENTE FTP - FILEZILLA
+**************************************
+
+sudo apt install filezilla
+filezilla
+
+PUERTO: 21
+ENCRYPTION - Use explicit FTP over TLS available
+USUARIO: usuftp
+PASWD: 123456
+
+**************************************
+INSTALAR  CLIENTE FTP - GFTP
+**************************************
+
+sudo apt install gftp
+gftp
+
+
+
+*************************************
+ADICIONAL
+*************************************
+
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem
+
+
+
+rsa_cert_file=/etc/ssl/certs/vsftpd.pem
+rsa_private_key_file=/etc/ssl/private/vsftpd.pem
+ssl_enable=YES
+allow_anon_ssl=NO
+force_local_data_ssl=YES
+force_local_logins_ssl=YES
+require_ssl_reuse=NO
+ssl_ciphers=HIGH
+ssl_tlsv1=YES
+ssl_sslv2=NO
+ssl_sslv3=NO
+
+
+
+
+
+
+
+
+
+
+
+
