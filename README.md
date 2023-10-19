@@ -1,13 +1,13 @@
 # Linux
  Linux
 
-![Slogan-poli-blanco](https://github.com/Harol003/Servidores_Linux/assets/66041310/94845017-de47-433b-9f95-b56af43dfd32)
+![Slogan-poli-blanco](https://github.com/Harol003/Servidores_Linux/assets/66041310/acb93f3d-67db-449b-9b3b-b4c99e4fa31c)
+
 
 En el emocionante mundo del desarrollo de software, la elección del entorno de trabajo adecuado puede marcar una diferencia significativa en la eficiencia y calidad de los proyectos. En este contexto, Ubuntu, una distribución de Linux ampliamente aclamada, se destaca como un aliado fundamental para los desarrolladores. Su versatilidad, robustez y rica gama de herramientas lo convierten en una opción de primer nivel para aquellos que buscan crear aplicaciones de alta calidad. Además de su utilidad en el desarrollo, la implementación de soluciones como LAMP y la habilidad de navegar la línea de comandos en Ubuntu añaden capas adicionales de potencial para los profesionales del desarrollo. En los siguientes párrafos, exploraremos más a fondo cómo Ubuntu se integra en el proceso de desarrollo, cómo la solución LAMP puede optimizar la creación de aplicaciones web, y por qué la maestría en la línea de comandos sigue siendo una habilidad esencial en este ecosistema.
 
 
-![LAMP-YMANT](https://github.com/Harol003/Servidores_Linux/assets/66041310/dfd63c45-3795-49f0-aeb7-f1df1ac97728)
-
+![LAMP](https://github.com/Harol003/Servidores_Linux/assets/66041310/7e60841c-da66-475d-bfd1-075634b810f5)
 
 Ubuntu y su Utilidad en Desarrollo:
 Ubuntu, una distribución de Linux de renombre, ha ganado popularidad en la comunidad de desarrollo debido a su robustez y flexibilidad. Al ofrecer una amplia gama de herramientas y bibliotecas de software, Ubuntu es un entorno ideal para el desarrollo de software. Su naturaleza de código abierto proporciona a los desarrolladores acceso a un ecosistema rico en recursos, lo que les permite crear aplicaciones de alta calidad de manera eficiente. Además, Ubuntu ofrece una estabilidad excepcional y actualizaciones constantes, lo que resulta esencial para el desarrollo de software sostenible.
