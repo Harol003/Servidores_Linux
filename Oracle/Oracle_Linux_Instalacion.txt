@@ -1,0 +1,107 @@
+***************************************
+ACTUALIZAR
+***************************************
+
+sudo apt-get update
+sudo apt-get upgrade -y
+
+***************************************
+INSTALAR ALIEN PARA CONVERTIR RPM
+***************************************
+
+sudo apt-get install -y alien libaio1 unixodbc
+
+***************************************
+DESCARGAR ORACLE
+***************************************
+
+wget https://download.oracle.com/otn-pub/otn_software/db-free/oracle-database-free-23c-1.0-1.el8.x86_64.rpm -O oracle-database.rpm
+
+***************************************
+CONVERTIR INSTALADOR DE RPM A DEB ORACLE
+***************************************
+
+sudo alien -d oracle-database-free-23c_1.0-2_amd64.deb 
+
+
+***************************************
+INSTALAR ORACLE
+***************************************
+
+sudo dpkg -i oracle-database-free-23c_1.0-2_amd64.deb
+
+***************************************
+CONFIGURAR VARIABLES DE ENTORNO ORACLE
+***************************************
+
+export ORACLE_HOME=/opt/oracle/product/23c/dbhomeFree
+export PATH=$PATH:$ORACLE_HOME/bin
+
+echo "export ORACLE_HOME=/opt/oracle/product/23c/dbhomeFree" >> ~/.bashrc
+echo "export PATH=\$PATH:\$ORACLE_HOME/bin" >> ~/.bashrc
+
+source ~/.bashrc
+
+$ORACLE_HOME/bin/sqlplus / as sysdba
+
+$ORACLE_HOME/sqlplus/mesg/
+
+***************************************
+CONFIGURAR ORACLE
+***************************************
+
+sudo /etc/init.d/oracle-free-23c  configure
+
+***************************************
+CREAR USUARIO Y GRUPO
+***************************************
+
+sudo groupadd oinstall
+sudo groupadd dba
+sudo useradd -m -g oinstall -G dba oracle
+sudo passwd Oracle
+
+***************************************
+AJUSTE PERMISOS USUARIO ORACLE
+***************************************
+
+sudo chown -R oracle:oinstall /opt/oracle
+sudo chmod -R 755 /opt/oracle
+
+***************************************
+SCRIPT DE CONFIGURACION ORACLE
+***************************************
+
+sudo su - oracle
+sudo /etc/init.d/oracle-free-23c configure
+
+***************************************
+INSTALAR LIBRERIA
+***************************************
+
+sudo apt update
+sudo apt install libxrender1
+sudo apt install libxtst6
+sudo apt install libxrender1 libxext6 libx11-6 libxi6 libxau6 libxdmcp6
+sudo apt install libxext6 libx11-6 libxi6 libxau6 libxdmcp6
+
+
+***************************************
+PERMISOS DE CARPETAS
+***************************************
+
+sudo chown root:root /opt/oracle/product/23c/dbhomeFree/bin/oradism
+sudo chmod 4755 /opt/oracle/product/23c/dbhomeFree/bin/oradism
+
+***************************************
+EJECUTAR COMO ROOT
+***************************************
+
+sudo /etc/init.d/oracle-free-23c configure
+
+
+
+
+
+
+
