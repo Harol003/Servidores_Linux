@@ -21,19 +21,36 @@ La línea de comandos sigue siendo una herramienta esencial en el desarrollo en 
 Beneficios de Ubuntu y su Ecosistema de Desarrollo:
 En resumen, Ubuntu ofrece un entorno de desarrollo altamente flexible y personalizable gracias a su amplia gama de herramientas y bibliotecas. La solución LAMP, combinando Linux, Apache, MySQL y PHP, brinda una plataforma sólida para el desarrollo web y reduce la complejidad del proceso de creación y despliegue de aplicaciones. La línea de comandos, por su parte, sigue siendo una herramienta indispensable para los desarrolladores, permitiéndoles realizar tareas de manera eficiente y acceder a un nivel más profundo de control. En conjunto, estas características hacen de Ubuntu una elección poderosa para aquellos que buscan desarrollar software de calidad en un entorno de código abierto y altamente personalizable.
 
-A continuacion pueden encontrar algunos tutoriales de instalacion de  mis estudiantes en relacion a Windows Cliente y Linux Cliente: 
+# Tutoriales de Instalación – Windows Cliente y Linux Cliente
 
-Linux
+A continuación, encontrarán una recopilación de **tutoriales de instalación** realizados por mis estudiantes, relacionados con la configuración de **Windows Cliente** y **Linux Cliente**.  
+El propósito es apoyar el proceso de aprendizaje mediante recursos creados por la misma comunidad académica.
 
-https://youtu.be/GUO5ykbGuns
-https://youtu.be/OfxQ1dRJEDM
-https://www.youtube.com/watch?si=RGKBP6xcMdGZvPjK&v=G01zNDPDB1A&feature=youtu.be
-https://youtu.be/2cun9WZoZow
-https://youtu.be/jA_Vn8KKBko
-https://www.youtube.com/watch?v=ZH4TRyv8DT4
-https://www.youtube.com/watch?v=CCLGnfMstGU
-https://youtu.be/FrINFM6MGEg
-<img width="105" height="25" alt="imagen" src="https://github.com/user-attachments/assets/652d0c40-0de9-4353-8101-9f493d2b6e01" />
+---
+
+## 🐧 Linux – Tutoriales de Instalación
+
+| Enlace | Descripción |
+|--------|---------------|
+| https://youtu.be/GUO5ykbGuns | Instalación de Linux (Video Estudiantil) |
+| https://youtu.be/OfxQ1dRJEDM | Instalación de Linux (Video Estudiantil) |
+| https://www.youtube.com/watch?v=G01zNDPDB1A | Instalación de Linux (Video Estudiantil) |
+| https://youtu.be/2cun9WZoZow | Instalación de Linux (Video Estudiantil) |
+| https://youtu.be/jA_Vn8KKBko | Instalación de Linux (Video Estudiantil) |
+| https://www.youtube.com/watch?v=ZH4TRyv8DT4 | Instalación de Linux (Video Estudiantil) |
+| https://www.youtube.com/watch?v=CCLGnfMstGU | Instalación de Linux (Video Estudiantil) |
+| https://youtu.be/FrINFM6MGEg | Instalación de Linux (Video Estudiantil) |
+
+---
+
+> ✨ *Si deseas agregar tu propio tutorial, realiza un Pull Request incluyendo el enlace y una breve descripción.*
+
+---
+
+### 📌 Nota
+Este repositorio busca promover el aprendizaje colaborativo y el fortalecimiento de competencias prácticas en entornos Windows y Linux.
+
+
 
 
 
