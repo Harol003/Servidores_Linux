@@ -41,6 +41,19 @@ El propósito es apoyar el proceso de aprendizaje mediante recursos creados por 
 | https://www.youtube.com/watch?v=CCLGnfMstGU | Instalación de Linux (Video Estudiantil) |
 | https://youtu.be/FrINFM6MGEg | Instalación de Linux (Video Estudiantil) |
 
+## 🐧 Linux & Windows – Tutoriales Soluciones Servidores 
+
+| Enlace | Descripción |
+|--------|---------------|
+| https://www.youtube.com/watch?v=STj3NJkzcGk | Instalación Solucion Servidor (Video Estudiantil) |
+| https://www.youtube.com/watch?v=uW0bxo8D-Vs | Instalación Solucion Servidor (Video Estudiantil) |
+| https://www.youtube.com/watch?v=rjwMrDSCdLQ | Instalación Solucion Servidor (Video Estudiantil) |
+| https://www.youtube.com/watch?v=OaKILvpvhT4 | Instalación Solucion Servidor (Video Estudiantil) |
+| https://www.youtube.com/watch?v=UHJJ92lOiLo | Instalación Solucion Servidor (Video Estudiantil) |
+| https://www.youtube.com/watch?v=siYw2i1MLBU | Instalación Solucion Servidor (Video Estudiantil) |
+| https://www.youtube.com/watch?v=yNp_DfcvSwA | Instalación Solucion Servidor (Video Estudiantil) |
+| https://www.youtube.com/watch?v=Anaajd8evEM | Instalación Solucion Servidor (Video Estudiantil) |
+
 ---
 
 > ✨ *Si deseas agregar tu propio tutorial, realiza un Pull Request incluyendo el enlace y una breve descripción.*
